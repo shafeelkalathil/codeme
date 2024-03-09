@@ -30,6 +30,12 @@ class AuthService{
       String token = jsonResponseMap['data']['token'];
       pref.setString("token", token);
       ref.read(tokenProvider.notifier).state=token;
+      var snackBar = SnackBar(
+        content: Text(jsonResponseMap["message"]??''),
+        duration: Duration(seconds: 2),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
     }else{
       const snackBar = SnackBar(
