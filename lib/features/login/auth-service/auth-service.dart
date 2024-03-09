@@ -36,7 +36,7 @@ class AuthService{
       );
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomePage(),), (route) => false);
     }else{
       const snackBar = SnackBar(
         content: Text('Username or Password Incorrect'),
